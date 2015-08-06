@@ -7,7 +7,7 @@ macro(UTIL_OUTPUT_HEADER target)
     message(STATUS "${target}: location = ${${_up_target}_LOCATION}")
 endmacro(UTIL_OUTPUT_HEADER)
 
-macro(UTIL_FIND_LOCATION target search_VERSIONS)
+macro(UTIL_FIND_LOCATION target search_VERSIONS location_HINT)
     string(TOUPPER ${target} _up_target)
     set(_target_LOCATION ${_up_target}_LOCATION)
     set(_target_SEARCH_PATHS ${${_target_LOCATION}})
@@ -19,11 +19,16 @@ macro(UTIL_FIND_LOCATION target search_VERSIONS)
 
     message(STATUS "${target}: search paths = ${_target_SEARCH_PATHS}")
 
-    find_path(_searched_LOCATION include
+    find_path(_${target}_SEARCHED_LOCATION ${location_HINT}
     PATHS ${_target_SEARCH_PATHS}
     DOC "${target}: location")
 
-    message(STATUS "${target}: location = ${_searched_LOCATION}")
+    if(_${target}_SEARCHED_LOCATION)
+        message(STATUS "${target}: searched location = ${_${target}_SEARCHED_LOCATION}")
+        set(${_target_LOCATION} ${_${target}_SEARCHED_LOCATION})
+    endif()
+
+
     message(STATUS "${target}: location = ${${_target_LOCATION}}")
 endmacro(UTIL_FIND_LOCATION)
 

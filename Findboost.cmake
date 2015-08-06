@@ -16,8 +16,8 @@
 include(UtilFindLib)
 
 UTIL_OUTPUT_HEADER(boost)
-set(_boost_VERSIONS "1.58.0" "1.57.0")
-UTIL_FIND_LOCATION(boost _boost_VERSIONS)
+set(_boost_VERSIONS "1.58.0" "1.57.0" "1.56.0")
+UTIL_FIND_LOCATION(boost _boost_VERSIONS "include/boost")
 
 UTIL_FIND_INCLUDE_DIRS(boost)
 UTIL_FIND_LIBRARY_DIRS(boost)
