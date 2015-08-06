@@ -53,6 +53,7 @@ message(STATUS "EXT_LIB_ROOT = $ENV{EXT_LIB_ROOT}")
 
 _set_lib_location(Eigen)
 _set_lib_location(OpenMesh)
+_set_lib_location(OpenVDB)
 
 message(STATUS "")
 
