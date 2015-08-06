@@ -21,7 +21,8 @@ UTIL_FIND_LOCATION(OpenVDB _openvdb_VERSIONS "include/openvdb")
 
 UTIL_FIND_INCLUDE_DIRS(OpenVDB)
 UTIL_FIND_LIBRARY_DIRS(OpenVDB)
-UTIL_FIND_LIBRARIES(OpenVDB openvdb)
+set(_openvdb_LIBRARIES openvdb)
+UTIL_FIND_LIBRARIES(OpenVDB _openvdb_LIBRARIES)
 
 #=======================
 # Find package
